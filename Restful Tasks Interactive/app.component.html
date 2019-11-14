@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ONLY</title>
+</head>
+<body>
+	<h1>Pokemon</h1>
+	<br><br>
+	<h2>This is the page for Bulbasaur</h2>
+	<ul>Abilities
+		<li *ngFor="let a of abilities">{{a.ability.name}}</li>
+	</ul>
+	
+  	<button (click)="chlorophyllFromService()">Click Here to see other pokemon with chlorophyll</button>
+  	<button (click)="overgrowFromService()">Click Here to see other pokemon with overgrow</button>
+  	<div *ngIf="list">
+  		<button (click)="hide()">Hide list</button>
+  		<ul>
+  			<li *ngFor="let poke of pokes">{{poke.pokemon.name}}</li>
+  		</ul>
+  	</div>
+  	<div *ngIf="list2">
+  		<button (click)="hide()">Hide list</button>
+  		<ul>
+  			<li *ngFor="let poke of pokemons">{{poke.pokemon.name}}</li>
+  		</ul>
+  	</div>
+
+</body>
+</html>
+ 
