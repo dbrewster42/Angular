@@ -1,0 +1,40 @@
+<h1>Tasks</h1>
+<br>
+<div class="each" *ngFor='let task of tasks'>   
+   
+   <h3 >{{task.title}}</h3>
+   
+   <button class='show' (click)="getTaskDetails(task)">Show</button>
+   <div *ngIf='show'>
+      <p>description- {{task.description}}</p>
+      <button (click)="editForm(task)">Edit</button>
+      <p>Completed- {{task.completed}}</p>
+      <button (click)="onDelete(task)">Delete</button>
+   </div>   
+</div>
+
+<div class="form" *ngIf='edit'>
+   <form (submit)="onEdit()">      
+       <p> {{ editTask | json }} </p>
+       <h3>Edit</h3>
+       <input type="text" name="title" class="text" [(ngModel)]="editTask.title" />
+       <input type="text" name="description" [(ngModel)]="editTask.description" />
+       <input type="submit" value="Edit Task" />
+   </form>
+</div>
+
+<div class="form">
+   <form (submit)="onSubmit()">  
+       <p> {{ newTask | json }} </p>
+       <h3>Create</h3>
+       Title: <input type="text" name="title" [(ngModel)]="newTask.title" class="text" /><br>
+       Description: <input type="text" name="description" [(ngModel)]="newTask.description" /><br>
+       <input type="submit" value="Create Task" />
+   </form>
+</div>
+
+
+
+
+
+<router-outlet></router-outlet>
