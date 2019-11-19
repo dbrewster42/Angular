@@ -1,0 +1,30 @@
+<h1>Rate my Cakes</h1>
+<div id="form">
+   <form (submit)="onCake()">  
+       <p> {{ newTask | json }} </p>
+       <p>Submit a cake to be rated</p>
+       Baker name: <br><input type="text" name="baker" [(ngModel)]="newCake.baker" class="text" /><br>
+       Image url: <br><input type="text" name="image" [(ngModel)]="newCake.image" /><br>
+       <input type="submit" value="Submit" id="submit">
+   </form>
+</div>
+<div id="display">
+   <div *ngFor="let cake of cakes">
+   <a (click)="info(cake)"><img class="pic" [src]="cake.image"></a>   
+   <form (submit)="onRate(cake)">
+      Rate
+      <select name="rating" [(ngModel)]="newRating.rating" >
+         <option value="1">1 star</option>
+         <option value="2">2 stars</option>
+         <option value="3">3 stars</option>
+         <option value="4">4 stars</option>
+         <option value="5">5 stars</option>           
+      </select><br>
+      <input type="textarea" name="comment" value="Type your comment here" class="comm" [(ngModel)]="newRating.comment"><br>
+      <input type="submit" value="Rate!">
+   </form>
+   </div>
+</div>
+<app-task *ngIf="selectedCake" [cakeToShow]="selectedCake" [average]="avg"></app-task>
+
+<router-outlet></router-outlet>
